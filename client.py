@@ -28,14 +28,7 @@ df_json = df.to_json(orient='records')
 url = "http://localhost:5000"
 
 
-
-
-
 app = Flask(__name__)
-
-# def display_score():
-#     r = requests.post(url = (url + "/run"), json= df_json )
-#     return r.content
 
 @app.route("/")
 def home():
@@ -48,21 +41,24 @@ def get_score():
     return r.content
 
 
+## Prediction 
+Primary_Offence = " "
 
+Report_DayOfYear = 0
+Occurrence_DayOfYear = 0
+diff = Report_DayOfYear - Occurrence_DayOfYear
 
-# @app.route("/data")
-# def displayData():
+Premises_Type = " "
 
-#     out = X_test.head(1).to_json(orient='records', lines=True)
-#     return out
+Cost_of_Bike = 100
 
+Occurrence_DayOfWeek = " "
 
-
-# @app.route("/forward/", methods=['POST'])
-# def move_forward():
-#     #Moving forward code
-#     forward_message = "Moving Forward..."
-#     return render_template('index.html', forward_message=forward_message);
+@app.route("/get_prediction", methods=['GET', 'POST'])
+def get_prediction():
+    
+    forward_message = "Moving Forward..."
+    return render_template('index.html', forward_message=forward_message);
 
 
 if __name__ ==  "__main__":

@@ -7,8 +7,49 @@
    <body>
       
       
-      <!-- <form action="/forward/" method="post"> -->
-      <a href="{{ url_for( 'get_score' )}}"><button name="forwardBtn" type="submit">Get the Score of the model</button></a>
-     <!-- </form> -->
+      Get the Score of the model: 
+      <a href="{{ url_for( 'get_score' )}}"><button name="forwardBtn" type="submit">Get Score</button></a><br><br>
+
+      Random incident from the test dataset
+      <a href="{{ url_for( 'get_score' )}}"><button name="forwardBtn" type="submit">Sumbmit an incident randomly</button></a><br><br>
+
+      <form name="search" action="/cgi-bin/test.py" method="get">
+         <fieldset>
+            <legend>Create a case</legend>
+            <table>
+               <tr>
+                  <td>Primary_Offence</td> <td><input type="text" name="textbox"><br></td>
+               </tr>
+               <tr>
+                  <td>Report_DayOfYear</td> <td><input type="text" name="textbox"></td>                  
+               </tr>
+               <tr>
+                  <td>Occurrence_DayOfYear</td> <td><input type="text" name="textbox"></td>                  
+               </tr>
+               <tr>
+                  <td>Premises_Type</td> <td><input type="text" name="textbox"></td>                  
+               </tr>
+               <tr>
+                  <td>Cost_of_Bike</td> <td><input type="text" name="textbox"></td>                  
+               </tr>
+               <tr>
+                  <td>Occurrence_DayOfWeek</td> <td><input type="text" name="textbox"></td>                  
+               </tr>
+               <tr>
+                  <td><input type="submit" value="Submit"></td>
+               </tr>   
+            </table>
+
+
+            <!-- Primary_Offence: <input type="text" name="textbox"><br>
+            Report_DayOfYear: <input type="text" name="textbox"><br>
+            Occurrence_DayOfYear: <input type="text" name="textbox"><br>
+            Premises_Type: <input type="text" name="textbox"><br>
+            Cost_of_Bike: <input type="text" name="textbox"><br>
+            Occurrence_DayOfWeek: <input type="text" name="textbox"><br>
+            <input type="submit" value="Submit">    -->
+         </fieldset>         
+      </form> 
+
    </body>
 </html>
