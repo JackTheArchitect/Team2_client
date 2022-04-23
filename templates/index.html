@@ -7,48 +7,146 @@
    <body>
       
       
-      Get the Score of the model: 
-      <a href="{{ url_for( 'get_score' )}}"><button name="forwardBtn" type="submit">Get Score</button></a><br><br>
+      Get the Score of the model: {{score}}
+      <a href="{{ url_for( 'get_score' )}}"><button name="button1" type="submit">Get Score</button></a><br><br>
 
       Random incident from the test dataset
-      <a href="{{ url_for( 'get_score' )}}"><button name="forwardBtn" type="submit">Sumbmit an incident randomly</button></a><br><br>
+      <a href="{{ url_for( 'get_prediction1' )}}"><button name="button2" type="submit">Sumbmit an incident randomly</button></a><br><br>
 
-      <form name="search" action="/cgi-bin/test.py" method="get">
+      <form name="search" action="{{ url_for('get_prediction2') }}" method="POST">
          <fieldset>
             <legend>Create a case</legend>
             <table>
                <tr>
-                  <td>Primary_Offence</td> <td><input type="text" name="textbox"><br></td>
+                  <td>Primary_Offence</td> 
+                  <td> 
+                     <select name="Primary_Offence">
+                        <option value="{{Primary_Offence[0]}}" selected>{{Primary_Offence[0]}}</option>                        
+                        {% for element in Primary_Offence[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td>
                </tr>
                <tr>
-                  <td>Report_DayOfYear</td> <td><input type="text" name="textbox"></td>                  
+                  <td>diff(Report_Day' - 'Occur_Day')</td> 
+                  <td>
+                     <select name="diff">
+                        <option value="{{diff[0]}}" selected>{{diff[0]}}</option>                        
+                        {% for element in diff[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td>                  
+               </tr>               
+               <tr>
+                  <td>Premises_Type</td> 
+                  <td>
+                     <select name="Premises_Type">
+                        <option value="{{Premises_Type[0]}}" selected>{{Premises_Type[0]}}</option>                        
+                        {% for element in Premises_Type[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td>                  
                </tr>
                <tr>
-                  <td>Occurrence_DayOfYear</td> <td><input type="text" name="textbox"></td>                  
+                  <td>Cost_of_Bike (CA $)</td> 
+                  <td>
+                     <input type="number" name="Cost_of_Bike" 
+                     placeholder=100 value = 100
+                     ></input>
+                  </td>                  
                </tr>
                <tr>
-                  <td>Premises_Type</td> <td><input type="text" name="textbox"></td>                  
+                  <td>Occurrence_Day Of Week</td> 
+                  <td>
+                     <select name="Occurrence_DayOfWeek">
+                        <option value="{{Occurrence_DayOfWeek[0]}}" selected>{{Occurrence_DayOfWeek[0]}}</option>                        
+                        {% for element in Occurrence_DayOfWeek[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td>                  
                </tr>
                <tr>
-                  <td>Cost_of_Bike</td> <td><input type="text" name="textbox"></td>                  
+                  <td>Occurrence_Year</td>
+                  <td>                     
+                      <input type="number" name="Occurrence_Year" 
+                      placeholder=2020 value = 2020
+                      ></input>                     
+                  </td>
                </tr>
                <tr>
-                  <td>Occurrence_DayOfWeek</td> <td><input type="text" name="textbox"></td>                  
+                  <td>Report_Hour</td> 
+                  <td>
+                     <select name="Report_Hour">
+                        <option value="{{Report_Hour[0]}}" selected>{{Report_Hour[0]}}</option>                        
+                        {% for element in Report_Hour[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td> 
                </tr>
                <tr>
-                  <td><input type="submit" value="Submit"></td>
-               </tr>   
+                  <td>Occurrence_Month</td> 
+                  <td>
+                     <select name="Occurrence_Month">
+                        <option value="{{Occurrence_Month[0]}}" selected>{{Occurrence_Month[0]}}</option>                        
+                        {% for element in Occurrence_Month[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td> 
+               </tr> 
+               <tr>
+                  <td>Location_Type</td> 
+                  <td>
+                     <select name="Location_Type">
+                        <option value="{{Location_Type[0]}}" selected>{{Location_Type[0]}}</option>                        
+                        {% for element in Location_Type[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td> 
+               </tr>
+               <tr>
+                  <td>NeighbourhoodName</td> 
+                  <td>
+                     <select name="NeighbourhoodName">
+                        <option value="{{NeighbourhoodName[0]}}" selected>{{NeighbourhoodName[0]}}</option>                        
+                        {% for element in NeighbourhoodName[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td> 
+               </tr>
+               <tr>
+                  <td>Longitude</td> 
+                  <td>
+                     <select name="Longitude">
+                        <option value="{{Longitude[0]}}" selected>{{Longitude[0]}}</option>                        
+                        {% for element in Longitude[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td>                  
+               </tr>               
+               <tr>
+                  <td>Latitude</td> 
+                  <td>
+                     <select name="Latitude">
+                        <option value="{{Latitude[0]}}" selected>{{Latitude[0]}}</option>                        
+                        {% for element in Latitude[1:] %}
+                        <option value="{{element}}">{{element}}</option>
+                        {% endfor %}
+                     </select>
+                  </td>                  
+               </tr>                   
             </table>
-
-
-            <!-- Primary_Offence: <input type="text" name="textbox"><br>
-            Report_DayOfYear: <input type="text" name="textbox"><br>
-            Occurrence_DayOfYear: <input type="text" name="textbox"><br>
-            Premises_Type: <input type="text" name="textbox"><br>
-            Cost_of_Bike: <input type="text" name="textbox"><br>
-            Occurrence_DayOfWeek: <input type="text" name="textbox"><br>
-            <input type="submit" value="Submit">    -->
-         </fieldset>         
+            <input type="submit" value="Submit">
+         </fieldset> 
+                 
       </form> 
 
    </body>

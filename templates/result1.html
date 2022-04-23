@@ -1,0 +1,36 @@
+<html>
+   <head>
+    <link rel="stylesheet" href="../static/result.css">
+   </head>
+   
+   <body>                 
+        <table>
+            <caption><b>Random Incident from test dataset</b></caption>
+                <tr>
+                    <th>Feature</th>
+                    <th>Value</th>
+                </tr>           
+          
+            {%for c, v in x_dict.items()%}
+            <tr>
+                <td>{{c}}</td>
+                <td>{{v}}</td>
+            </tr>
+            {%endfor%}
+            <tr> 
+                <td>----</td><td>----</td>
+            </tr>
+            <tr> 
+                <td></td><td>Status (Classification)</td>
+            </tr>
+            <tr>
+                <td><b>Prediction </b></td> <td>{{prediction}}</td>
+            </tr>
+            <tr>
+                <td><b>Actual Value </b></td> <td>{{actual_value}}</td>  
+            </tr>   
+        </table>  
+        <br><br>
+        <a href="{{ url_for( 'home' )}}"><button name="home" type="buttom">Back Home</button></a><br><br>
+   </body>
+</html>
