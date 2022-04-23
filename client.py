@@ -12,8 +12,11 @@ import os
 # loaded_model = pickle.load(open(filename, 'rb'))
 
 # Load X_test, y_test
-X_test = pd.read_pickle('X_test.pkl')
-y_test = pd.read_pickle('y_test.pkl')
+X_test = pd.read_pickle('./static/X_test.pkl')
+y_test = pd.read_pickle('./static/y_test.pkl')
+# X_test = pd.read_pickle('/home/jackim2/mysite/static/X_test.pkl')
+# y_test = pd.read_pickle('/home/jackim2/mysite/static/y_test.pkl')
+
 
 
 print(X_test.head(2))
@@ -25,14 +28,17 @@ df = X_test.assign(Status=y_test)
 df_json = df.to_json(orient='records')
 
 # backend api url
-url = "http://localhost:5000"
+url = "http://jackim.pythonanywhere.com"
+# "http://localhost:5000"
+# http://jackim.pythonanywhere.com
 
 
 app = Flask(__name__)
+# app = Flask(__name__, template_folder='/home/jackim2/mysite/templates/')
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html") # render_template only takes the name of the file itself. NO path
 
 
 @app.route("/get_score")
