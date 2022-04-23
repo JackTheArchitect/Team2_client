@@ -29,8 +29,8 @@ df_json = df.to_json(orient='records')
 
 # backend api url
 url = "http://jackim.pythonanywhere.com"
-# "http://localhost:5000"
-# http://jackim.pythonanywhere.com
+# url ="http://localhost:5000"
+
 
 
 app = Flask(__name__)
